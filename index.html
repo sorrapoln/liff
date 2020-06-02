@@ -72,8 +72,13 @@
     }
 
     async function getUserProfile() {
+		  const profile = await liff.getProfile()
+		  document.getElementById("pictureUrl").src = profile.pictureUrl
+		  document.getElementById("userId").append(profile.userId)
+		  document.getElementById("statusMessage").append(profile.statusMessage) 
+		  document.getElementById("displayName").append(profile.displayName) 
     }
-
+	//async  = wait for profile data to continue
     function getEnvironment() {
 	  document.getElementById("os").append(liff.getOS()) //IOS or android??
 	  document.getElementById("language").append(liff.getLanguage()) //get language from user
@@ -95,7 +100,7 @@
       
       await liff.init({ liffId: "1654294849-vVqxzWQD" }) //start from here by getting LIFF ID (code in URL)
       getEnvironment() //??
-      // getUserProfile()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
