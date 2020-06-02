@@ -66,14 +66,23 @@
     }
 
     async function sendMsg() {
+		  if (liff.getContext().type != "none"){
+		  	 await.liff.sendMessages([
+			   {
+			     "type" : "sticker",
+				 "stickerId" : 1,
+				 "packageId" : 1,
+			   }
+			 ]}
+			 alert("Message sent")
     }
 
     function getContext() {
-			 document.getElementById("type").append(liff.getContext().type) //1-1 chat??
+			 document.getElementById("type").append(liff.getContext().type) //1-1 chat?? group?? room??
 			 document.getElementById("viewType").append(liff.getContext().viewType) //which view compact , tall or full
 			 document.getElementById("utouId").append(liff.getContext().utouId)// if chat 1-1 with Liff , it will show the ID
-			 document.getElementById("roomId").append(liff.getContext().roomId) // get the ID from room that user open the link in
-			 document.getElementById("groupId").append(liff.getContext().groupId)// get the ID from group that user open the link in
+			 document.getElementById("roomId").append(liff.getContext().roomId) // get the ID from room that user open the link in , if not in room -> not show
+			 document.getElementById("groupId").append(liff.getContext().groupId)// get the ID from group that user open the link in,, if not in group -> not show
     }
 
     async function getUserProfile() {
