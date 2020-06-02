@@ -75,17 +75,17 @@
     }
 
     function getEnvironment() {
-	  document.getElemenById("os").append(liff.getOS()) //IOS or android??
-	  document.getElemenById("language").append(liff.getLanguage()) //get language from user
-	  document.getElemenById("version").append(liff.getVersion()) //get the version from user
-	  document.getElemenById("accessToken").append(liff.getAccessToken()) //security
-	  document.getElemenById("isInClient").append(liff.isInClient()) //wanna know that user uses liff from internal app or external browser
+	  document.getElementById("os").append(liff.getOS()) //IOS or android??
+	  document.getElementById("language").append(liff.getLanguage()) //get language from user
+	  document.getElementById("version").append(liff.getVersion()) //get the version from user
+	  document.getElementById("accessToken").append(liff.getAccessToken()) //security
+	  document.getElementById("isInClient").append(liff.isInClient()) //wanna know that user uses liff from internal app or external browser
 	  if (liff.isInClient()) {
-	  	 document.getElemenById("btnLogOut").style.display = "none"
+	  	 document.getElementById("btnLogOut").style.display = "none"
       } else {
-	     document.getElemenById("btnMsg").style.display = "none"
-		 document.getElemenById("btnScanCode").style.display = "none"
-		 document.getElemenById("btnClose").style.display = "none"
+	     document.getElementById("btnMsg").style.display = "none"
+		 document.getElementById("btnScanCode").style.display = "none"
+		 document.getElementById("btnClose").style.display = "none"
 	  }
 	  // check if user use liff -> hide the LogOut button
 	  //else (external browser) -> cannot close liff , cannot scan code , cannot get message
