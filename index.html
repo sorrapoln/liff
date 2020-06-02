@@ -11,7 +11,7 @@
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
-  <p id="accessToken"><b>AccessToken:</b> </p>
+  <p id="accessToken"><b>AccessToken:</b> </p>			  																					
   <img id="pictureUrl">
   <p id="userId"><b>userId:</b> </p>
   <p id="displayName"><b>displayName:</b> </p>
@@ -42,7 +42,7 @@
     console.log("Hello World!")
   </script> -->
 
-  <!-- <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script> -->
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.1.13/sdk.js"></script> 
   <script>
     function createUniversalLink() {
     }
@@ -75,12 +75,26 @@
     }
 
     function getEnvironment() {
+	  document.getElemenById("os").append(liff.getOS()) //IOS or android??
+	  document.getElemenById("language").append(liff.getLanguage()) //get language from user
+	  document.getElemenById("version").append(liff.getVersion()) //get the version from user
+	  document.getElemenById("accessToken").append(liff.getAccessToken()) //security
+	  document.getElemenById("isInClient").append(liff.isInClient()) //wanna know that user uses liff from internal app or external browser
+	  if (liff.isInClient()) {
+	  	 document.getElemenById("btnLogOut").style.display = "none"
+      } else {
+	     document.getElemenById("btnMsg").style.display = "none"
+		 document.getElemenById("btnScanCode").style.display = "none"
+		 document.getElemenById("btnClose").style.display = "none"
+	  }
+	  // check if user use liff -> hide the LogOut button
+	  //else (external browser) -> cannot close liff , cannot scan code , cannot get message
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
-      await liff.init({ liffId: "YOUR-LIFF-ID" })
-      // getEnvironment()
+      
+      await liff.init({ liffId: "1654294849-vVqxzWQD" }) //start from here by getting LIFF ID (code in URL)
+      getEnvironment() //??
       // getUserProfile()
       // getContext()
       // getFriendship()
