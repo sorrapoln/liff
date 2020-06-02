@@ -69,6 +69,11 @@
     }
 
     function getContext() {
+			 document.getElementById("type").append(liff.getContext().type) //1-1 chat??
+			 document.getElementById("viewType").append(liff.getContext().viewType) //which view compact , tall or full
+			 document.getElementById("utouId").append(liff.getContext().utouId)// if chat 1-1 with Liff , it will show the ID
+			 document.getElementById("roomId").append(liff.getContext().roomId) // get the ID from room that user open the link in
+			 document.getElementById("groupId").append(liff.getContext().groupId)// get the ID from group that user open the link in
     }
 
     async function getUserProfile() {
@@ -77,7 +82,8 @@
 		  document.getElementById("userId").append(profile.userId)
 		  document.getElementById("statusMessage").append(profile.statusMessage) 
 		  document.getElementById("displayName").append(profile.displayName) 
-		  document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email) //liff (use via openid)
+		  //use profile to get the data
+		  document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email) //use liff (use via openid) to get an email
     }
 	//async  = wait for profile data to continue
     function getEnvironment() {
@@ -102,7 +108,7 @@
       await liff.init({ liffId: "1654294849-vVqxzWQD" }) //start from here by getting LIFF ID (code in URL)
       getEnvironment() //??
       getUserProfile()
-      // getContext()
+      getContext()
       // getFriendship()
       // createUniversalLink()
     }
